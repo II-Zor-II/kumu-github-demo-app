@@ -39,6 +39,7 @@ class CachingGithubRepository implements GithubRepositoryInterface
                 return $this->externalApi->findByUsername($username);
             });
         }
+
         return $cache;
     }
 

@@ -40,13 +40,18 @@ class ExternalGithubRepository implements GithubApiInterface
 
         if ($response->status() === 200 &&
             $response->ok() === true) {
-            return $response->collect()->only([
+
+            $apiResponse = $response->collect()->only([
                 'login',
                 'name',
                 'company',
                 'followers',
                 'public_repos'
             ])->toArray();
+
+            $apiResponse['avg_followers_per_repo'] = floor($apiResponse['followers'] / $apiResponse['public_repos']);
+
+            return $apiResponse;
         }
 
         return null;
