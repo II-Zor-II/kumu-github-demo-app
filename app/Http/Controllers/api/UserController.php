@@ -27,12 +27,38 @@ class UserController extends BaseController
     {
         $firstNum = intval($firstNum);
         $secondNum = intval($secondNum);
+        if ($firstNum < 0 || $secondNum < 0) {
+            throw new \Exception("negative numbers are not accepted");
+        }
 
-        dd(
-            $firstNum,
-            $secondNum,
-            $firstNum + $secondNum
+        $str1 = decbin($firstNum);
+        $str2 = decbin($secondNum);
+
+        if ($firstNum > $secondNum) {
+            $str2 = str_pad($str2, strlen($str1), "0", STR_PAD_LEFT);
+        }
+        if ($secondNum > $firstNum) {
+            $str1 = str_pad($str1, strlen($str2), "0", STR_PAD_LEFT);
+        }
+
+        $hamming_distance = count(
+            array_diff_assoc(
+                str_split($str1),
+                str_split($str2)
+            )
         );
+
+        return response()->json([
+            'first_num' => [
+                'int' => $firstNum,
+                'binary_representation' => $str1
+            ],
+            'second_num' => [
+                'int' => $secondNum,
+                'binary_representation' => $str2
+            ],
+            'Hamming Distance' => $hamming_distance
+        ]);
     }
 
     /**
@@ -85,7 +111,6 @@ class UserController extends BaseController
 
         return response()->json($response, $http_code);
     }
-
 
 
 }
