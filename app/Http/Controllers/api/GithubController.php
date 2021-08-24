@@ -22,16 +22,13 @@ class GithubController extends BaseController
         $this->repository = $repository;
     }
 
-    function test(Request $request)
-    {
-        return response()->json(['test' => Str::random(16)]);
-    }
-
     function getUsers(GithubRequest $request)
     {
         $users = $request->get('users');
 
         $response = $this->repository->findUsers($users);
+
+        ksort($response);
 
         return $response;
     }
