@@ -79,3 +79,13 @@ EX:
 }
 ```
 * hit Send
+----------------------
+
+----------------------
+### Bonus Challenge
+Just go to:
+```angular2
+http://localhost/hamming-distance/{first_number}/{second_number}
+Ex:
+http://localhost/hamming-distance/1/4
+```
