@@ -23,9 +23,16 @@ class UserController extends BaseController
         $this->model = $model;
     }
 
-    function test(Request $request)
+    function hammingDistance($firstNum, $secondNum)
     {
-        return response()->json(['test' => Str::random(16)]);
+        $firstNum = intval($firstNum);
+        $secondNum = intval($secondNum);
+
+        dd(
+            $firstNum,
+            $secondNum,
+            $firstNum + $secondNum
+        );
     }
 
     /**
@@ -78,6 +85,7 @@ class UserController extends BaseController
 
         return response()->json($response, $http_code);
     }
+
 
 
 }

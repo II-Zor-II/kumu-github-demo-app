@@ -1,7 +1,24 @@
 ## KUMU-API-DEMO-APP
 
-### How To Execute Endpoints
+### HOW TO SETUP
+uses Laravel sail:
+* https://laravel.com/docs/8.x/sail
 
+How to use:
+ enter the project-folder (kumu-github-demo-app by default)
+ 
+```angular2html
+
+./vendor/bin/sail up
+
+./vendor/bin/sail artisan migrate:fresh
+
+```
+
+----------------------
+
+----------------------
+### How To Execute Endpoints
 
 1.) Using Postman :
  * New Tab - use URL
