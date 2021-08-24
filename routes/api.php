@@ -1,6 +1,7 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\api\GithubController;
+use App\Http\Controllers\api\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+
+Route::post('/user', [UserController::class, 'store']);
+
+Route::middleware('auth:sanctum')->get('/users/github', [GithubController::class, 'getUsers']);
